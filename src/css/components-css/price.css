@@ -1,0 +1,20 @@
+.origin-price {
+    text-decoration: line-through;
+    opacity: .7;
+    margin-right: .5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.price {
+    color: rgb(59 130 246);
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin: 0;
+}
+
+.reduce-price {
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}

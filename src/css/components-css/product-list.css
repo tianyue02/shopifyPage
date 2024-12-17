@@ -1,0 +1,28 @@
+.product-list-container{
+    padding: 1rem;
+}
+.product-list {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(1,1fr); 
+}
+
+@media(min-width: 680px) {
+    .product-list {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(min-width:1024px) {
+    .product-list {
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media(min-width:1280px){
+    .product-list {
+        grid-template-columns: repeat(4,1fr);
+    }
+}
+
+

@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+
+.single-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: "Karla", sans-serif;
+}
+
+.single-list {
+    display: grid;
+    gap: 1rem;
+}
+
+@media(min-width: 680px) {
+    .single-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media(min-width:768px) {
+    .single-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(min-width:1024px) {
+    .single-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(min-width:1280px) {
+    .single-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

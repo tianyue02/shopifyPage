@@ -1,25 +1,71 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import Footer from "./components/footer";
+import NavigationBar from "./components/navigation-bar";
+import MainPage from "./pages/main-page";
+import LoginPage from "./pages/login-page";
+import { AuthProvider } from "./context/auth-context";
+import AccountPage from "./pages/account";
+import WishPage from "./pages/wish.jsx";
+import SingleProduct from "./components/single-product.jsx";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Route,
+  Outlet,
+} from "react-router-dom";
+import { CartProvider } from "./context/cart-context.jsx";
+import Cart from "./components/cart.jsx";
+import Products from "../src/pages/all-products.jsx";
+import SingleCategory from "./pages/single-categories.jsx";
+import { CategoryProvider } from "./context/category-context.jsx";
+import Categories from "./pages/categories.jsx";
+import "./index.css";
+import { ThemeProvider } from "./context/theme-context.jsx";
+import ScrollToTopButton from "./components/scroll-to-up-button.jsx";
+const Layout = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavigationBar />
+      <Outlet />
+      <ScrollToTopButton />
+      <Footer />
     </div>
   );
-}
+};
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route>
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/account" element={<AccountPage />} />
+        <Route path="/wishes" element={<WishPage />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/product/:productID"
+          element={<SingleProduct productID={6} />}
+        />
+        <Route path="/products" element={<Products />} />
+        <Route path="/category" element={<Categories />} />
+        <Route path="/category/:name" element={<SingleCategory />} />
+      </Route>
+    </Route>
+  )
+);
+
+const App = () => {
+  return (
+    <ThemeProvider>
+      <AuthProvider>
+        <CartProvider>
+          <CategoryProvider>
+            <RouterProvider router={router} />
+          </CategoryProvider>
+        </CartProvider>
+      </AuthProvider>
+    </ThemeProvider>
+  );
+};
 
 export default App;
