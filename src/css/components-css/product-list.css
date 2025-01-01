@@ -1,6 +1,15 @@
 .product-list-container{
     padding: 1rem;
 }
+
+.product-list-container.light-mode {
+    background-color: white;
+}
+
+.product-list-container.dark-mode {
+    background-color: #1E293B;
+}
+
 .product-list {
     display: grid;
     gap: 1rem;

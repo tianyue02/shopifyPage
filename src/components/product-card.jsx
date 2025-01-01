@@ -6,6 +6,7 @@ import RatingStar from "./rating-star";
 import { useState } from "react";
 import { useCart } from "../context/cart-context";
 import "../index.css";
+import { useTheme } from "../context/theme-context";
 
 const ProductCard = ({
   id,
@@ -18,6 +19,7 @@ const ProductCard = ({
 }) => {
   const [message, setMessage] = useState("");
   const { dispatch } = useCart();
+  const { isDarkMode } = useTheme();
   const addToCart = () => {
     const action = {
       type: "ADD_TO_CART",
@@ -35,7 +37,7 @@ const ProductCard = ({
     dispatch(action);
   };
   return (
-    <div className="product-card">
+    <div className={`product-card ${isDarkMode ? "dark-mode" : "light-mode"}`}>
       {message && <p className="message">{message}</p>}
       <div className="product-image-container">
         <Link to={`/product/${id}`}>
@@ -48,7 +50,7 @@ const ProductCard = ({
           {title}
         </Link>
       </div>
-      <div className="rating-star-container">
+      <div className="rating-star-section">
         <RatingStar rating={rating} className="rating-star" />
       </div>
       <div className="product-footer">

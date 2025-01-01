@@ -1,9 +1,11 @@
 import { useCategory } from "../context/category-context";
 import { Link } from "react-router-dom";
 import React from "react";
-import "../css/page.css/category.css"
+import "../css/page.css/category.css";
+import { useTheme } from "../context/theme-context";
 
 const Categories = () => {
+  const { isDarkMode } = useTheme();
   console.log("Categories component mounted");
   const { categories } = useCategory();
 
@@ -18,11 +20,11 @@ const Categories = () => {
   console.log("Categories to render:", categories);
 
   return (
-    <div className="category-container">
+    <div className={`category-container ${isDarkMode ? "dark-mode" : "light-mode"}`}>
       <h1 className="category-title">Product Categories</h1>
       <div className="category-list">
         {categories.map(({ name, displayName }) => (
-          <div key={name} className="category-item">
+          <div key={name} className={`category-item ${isDarkMode ? "dark-mode" : "light-mode"}`}>
             <div className="category-name">{displayName}</div>
             <Link to={`/category/${name}`} className="category-link">
               View products
@@ -35,4 +37,3 @@ const Categories = () => {
 };
 
 export default Categories;
-

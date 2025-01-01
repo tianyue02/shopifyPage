@@ -1,15 +1,95 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
 
-.single-container {
+.single-product-container {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
     font-family: "Karla", sans-serif;
+    border-bottom: gray solid 1px;
+}
+
+.single-product-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.single-product-container.light-mode {
+    background-color: white;
+}
+
+.single-product-container.dark-mode {
+    background-color: #1E293B;
+}
+
+.main-image {
+    width: 20rem;
+    height: 20rem;
+}
+
+.thumbnail {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail.active-thumbnail {
+    width: 70px;
+    height: 70px;
+    border: 2px solid #007BFF;
+    transform: scale(1.1);
 }
 
 .single-list {
     display: grid;
     gap: 1rem;
+}
+
+.product-about {
+    width: 100%;
+    height: auto;
+}
+
+.all-button {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    margin-top: 1rem;
+}
+
+.cart-button,.hand-button,.wish-button {
+    color: white;
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cart-button {
+    background-color: #EC4899;
+}
+
+.cart-button:hover {
+    background-color: #b92c72;
+}
+
+.hand-button {
+    background-color: rgb(59 130 246);
+}
+
+.hand-button:hover {
+    background-color: #0f5fb4;
+}
+
+.wish-button {
+    background-color: rgb(234 179 8);
+}
+
+.wish-button:hover {
+    background-color: rgb(204, 155, 10);
 }
 
 @media(min-width: 680px) {

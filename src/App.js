@@ -14,7 +14,6 @@ import {
   Outlet,
 } from "react-router-dom";
 import { CartProvider } from "./context/cart-context.jsx";
-import Cart from "./components/cart.jsx";
 import Products from "../src/pages/all-products.jsx";
 import SingleCategory from "./pages/single-categories.jsx";
 import { CategoryProvider } from "./context/category-context.jsx";
@@ -22,12 +21,15 @@ import Categories from "./pages/categories.jsx";
 import "./index.css";
 import { ThemeProvider } from "./context/theme-context.jsx";
 import ScrollToTopButton from "./components/scroll-to-up-button.jsx";
+import Cart from "./components/cart.jsx";
+import { WishListProvider } from "./context/wishList-context.jsx";
 const Layout = () => {
   return (
     <div>
       <NavigationBar />
       <Outlet />
       <ScrollToTopButton />
+      <Cart />
       <Footer />
     </div>
   );
@@ -41,7 +43,6 @@ const router = createBrowserRouter(
         <Route path="/login" element={<LoginPage />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="/wishes" element={<WishPage />} />
-        <Route path="/cart" element={<Cart />} />
         <Route
           path="/product/:productID"
           element={<SingleProduct productID={6} />}
@@ -59,9 +60,11 @@ const App = () => {
     <ThemeProvider>
       <AuthProvider>
         <CartProvider>
-          <CategoryProvider>
-            <RouterProvider router={router} />
-          </CategoryProvider>
+          <WishListProvider>
+            <CategoryProvider>
+              <RouterProvider router={router} />
+            </CategoryProvider>
+          </WishListProvider>
         </CartProvider>
       </AuthProvider>
     </ThemeProvider>

@@ -7,7 +7,7 @@ import { ProductApiProvider } from "../context/product-context";
 
 const MainPage = () => {
   return (
-    <div>
+    <div className="page-container">
       <HeadAdvertise />
       <Features />
       <ProductApiProvider>

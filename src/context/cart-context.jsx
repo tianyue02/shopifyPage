@@ -33,7 +33,12 @@ const cartReducer = (state, action) => {
         );
         return { ...state, cartItems: updatedCart };
       }
-
+    case "REMOVE_FROM_CART":
+      const updatedCart = state.cartItems.filter(
+        (item) => item.id !== action.payload
+      );
+      console.log("Cart after removing item:", updatedCart);
+      return { ...state, cartItems: updatedCart };
     case "REDUCE_FROM_CART":
       const reducedCart = state.cartItems.map((item) =>
         item.id === action.payload
@@ -42,6 +47,7 @@ const cartReducer = (state, action) => {
       );
       return { ...state, cartItems: reducedCart };
     case "SET_CART_STATE":
+      console.log("SET_CART_STATE Payload:", action.payload);
       return { ...state, cartOpen: action.payload };
     case "EMPTY_CART":
       return { ...state, cartItems: [] };

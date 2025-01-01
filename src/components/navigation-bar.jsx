@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs";
 import "../css/components-css/navBar.css";
 import { FaUser } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { MdOutlineLightMode, MdDarkMode } from "react-icons/md";
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
 import { useState } from "react";
@@ -12,29 +12,42 @@ import { MdOutlineAccountCircle } from "react-icons/md";
 import { LuLogOut } from "react-icons/lu";
 import { message } from "antd";
 import { useTheme } from "../context/theme-context";
+import { useCart } from "../context/cart-context";
 import "../index.css";
 
 const NavigationBar = () => {
   const navigate = useNavigate();
+  const { state, dispatch } = useCart();
   const { isLoggedIn, username, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-  const handleCartClick = () => {
+
+  const toggleCart = () => {
+    console.log("Cart Open Before Toggle:", state.cartOpen);
     if (!isLoggedIn) {
       message.warning("Please Login");
       navigate("/login");
     } else {
-      navigate("/cart");
+      dispatch({ type: "SET_CART_STATE", payload: !state.cartOpen });
+      console.log("Cart Open After Toggle:", !state.cartOpen);
     }
   };
+
+  const getCartItemCount = () => {
+    const uniqueItems = state.cartItems.map((item) => item.id);
+    const uniqueItemsSet = new Set(uniqueItems);
+    return uniqueItemsSet.size;
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <div className="nav-bar">
+    <div className={`nav-bar ${isDarkMode ? "dark-mode" : "light-mode"}`}>
       <div className="nav-bar-container">
         <div className="nav-bar-logo">
           <Link to="/" className="nav-link">
@@ -139,11 +152,17 @@ const NavigationBar = () => {
               </div>
             )}
             <div className="cart-icon">
-              <AiOutlineShoppingCart onClick={handleCartClick} />
+              <AiOutlineShoppingCart onClick={toggleCart} />
+              {getCartItemCount() > 0 && (
+                <div className="cart-count">{getCartItemCount()}</div>
+              )}
             </div>
             <div className="dark-light">
               {isDarkMode ? (
-                <MdDarkMode onClick={toggleTheme} className="theme-change" />
+                <MdOutlineDarkMode
+                  onClick={toggleTheme}
+                  className="theme-change"
+                />
               ) : (
                 <MdOutlineLightMode
                   onClick={toggleTheme}

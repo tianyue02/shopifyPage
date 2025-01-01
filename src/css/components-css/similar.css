@@ -1,0 +1,20 @@
+.similar-products-container {
+    margin-top: 40px;
+}
+
+.similar-products-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.similar-products-container h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.similar-products-list img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}

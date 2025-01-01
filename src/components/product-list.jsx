@@ -2,9 +2,12 @@ import React from "react";
 import ProductCard from "./product-card";
 import "../css/components-css/product-list.css";
 import "../index.css";
+import { useTheme } from "../context/theme-context";
 
-const ProductList = ({ title, products }) => (
-  <div className="product-list-container">
+const ProductList = ({title ,products}) => {
+  const {isDarkMode} = useTheme();
+  return (
+    <div className={`product-list-container ${isDarkMode ? "dark-mode" : "light-mode"}`}>
     <div className="header">
       <h2>{title}</h2>
     </div>
@@ -23,6 +26,8 @@ const ProductList = ({ title, products }) => (
       ))}
     </div>
   </div>
-);
+  );
+}
+
 
 export default ProductList;

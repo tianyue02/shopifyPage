@@ -12,13 +12,11 @@ const RatingStar = ({ rating }) => {
 
   return (
     <div className="rating-star-container">
-      <div className="stars">
         {filledStars}
         {emptyStars}
-      </div>
-      <span className="rating-value">{rating.toFixed(1)}</span>
+      <span className="rating-value">{rating.toFixed(2)}</span>
     </div>
   );
-};
+}; 
 
 export default RatingStar;

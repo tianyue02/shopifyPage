@@ -1,8 +1,20 @@
 import React from "react";
 import { useCart } from "../context/cart-context";
-import { MdDelete } from "react-icons/md";
+import "../css/components-css/cart-row.css";
+import {
+  IoIosAddCircleOutline,
+  IoIosRemoveCircleOutline,
+} from "react-icons/io";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
-const CartRow = ({ id, thumbnail, title, price, quantity, discountPercentage }) => {
+const CartRow = ({
+  id,
+  thumbnail,
+  title,
+  price,
+  quantity,
+  discountPercentage,
+}) => {
   const { dispatch } = useCart();
 
   if (!id || !title || !quantity) {
@@ -17,38 +29,38 @@ const CartRow = ({ id, thumbnail, title, price, quantity, discountPercentage }) 
   return (
     <div className="cart-row">
       <img src={thumbnail} alt={title} />
-      <div>
-        <h3>{title}</h3>
-        <p>${discountedPrice.toFixed(2)}</p>
-        <div>
-          <button
+      <div className="cart-details">
+        <h3 className="products-title">{title}</h3>
+        <div className="discount-section">
+          <p>${discountedPrice.toFixed(2)}</p>
+        </div>
+        <div className="operate-section">
+          <IoIosRemoveCircleOutline
+            className="subtract-button"
             onClick={() => {
               dispatch({ type: "REDUCE_FROM_CART", payload: id });
             }}
-          >
-            -
-          </button>
+          />
           <span>{quantity}</span>
-          <button
+          <IoIosAddCircleOutline
+            className="add-button"
             onClick={() => {
               dispatch({
                 type: "ADD_TO_CART",
                 payload: { id, title, price, quantity, discountPercentage },
               });
             }}
-          >
-            +
-          </button>
+          />
         </div>
       </div>
-      <MdDelete
-        onClick={() => dispatch({ type: "REMOVE_FROM_CART", payload: id })}
-      />
+      <div className="delete-section">
+        <RiDeleteBin6Line
+          className="delete-button"
+          onClick={() => dispatch({ type: "REMOVE_FROM_CART", payload: id })}
+        />
+      </div>
     </div>
   );
 };
 
 export default CartRow;
-
-
-  
