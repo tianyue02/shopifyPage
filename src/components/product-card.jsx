@@ -33,7 +33,6 @@ const ProductCard = ({
         discountPercentage,
       },
     };
-    console.log("Dispatch Action:", action);
     dispatch(action);
   };
   return (

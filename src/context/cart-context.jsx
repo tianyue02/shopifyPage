@@ -4,7 +4,6 @@ const initialState = {
   cartItems: [],
 };
 const cartReducer = (state, action) => {
-  console.log("Reducer Action:", action);
   switch (action.type) {
     case "ADD_TO_CART":
       const existingIndex = state.cartItems.findIndex(
@@ -18,7 +17,6 @@ const cartReducer = (state, action) => {
         };
 
         if (!newItem.id || !newItem.title || !newItem.quantity) {
-          console.error("ADD_TO_CART received incomplete data:", newItem);
         }
 
         return {
@@ -37,7 +35,6 @@ const cartReducer = (state, action) => {
       const updatedCart = state.cartItems.filter(
         (item) => item.id !== action.payload
       );
-      console.log("Cart after removing item:", updatedCart);
       return { ...state, cartItems: updatedCart };
     case "REDUCE_FROM_CART":
       const reducedCart = state.cartItems.map((item) =>
@@ -47,7 +44,6 @@ const cartReducer = (state, action) => {
       );
       return { ...state, cartItems: reducedCart };
     case "SET_CART_STATE":
-      console.log("SET_CART_STATE Payload:", action.payload);
       return { ...state, cartOpen: action.payload };
     case "EMPTY_CART":
       return { ...state, cartItems: [] };
@@ -58,7 +54,6 @@ const cartReducer = (state, action) => {
 const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
-  console.log("Cart State:", state);
   return (
     <CartContext.Provider value={{ state, dispatch }}>
       {children}

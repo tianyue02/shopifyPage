@@ -18,11 +18,8 @@ const CartRow = ({
   const { dispatch } = useCart();
 
   if (!id || !title || !quantity) {
-    console.error("CartRow missing data:", { id, title, quantity });
     return null;
   }
-
-  console.log("Rendering CartRow for:", { id, title, quantity });
 
   const discountedPrice = price - (price * discountPercentage) / 100;
 
@@ -30,7 +27,7 @@ const CartRow = ({
     <div className="cart-row">
       <img src={thumbnail} alt={title} />
       <div className="cart-details">
-        <h3 className="products-title">{title}</h3>
+        <span className="products-title">{title}</span>
         <div className="discount-section">
           <p>${discountedPrice.toFixed(2)}</p>
         </div>

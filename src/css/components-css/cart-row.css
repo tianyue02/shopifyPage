@@ -1,18 +1,19 @@
 .cart-row {
-  display: grid !important;
-  grid-template-columns: 1fr 2fr 2fr 1fr 1fr 1fr 1fr !important;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr 1fr 1fr 1fr;
   gap: 10px;
   border: 1px solid #ddd;
   height: 84px;
   align-items: center;
   overflow: hidden;
+  margin-bottom: 10px;
 }
 
 .cart-row img {
   width: 80px;
   height: 80px;
   object-fit: cover;
-  grid-column: 1 / 2 !important;
+  grid-column: 1 / 2;
   object-position: center;
 }
 
@@ -21,15 +22,19 @@
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  grid-column: 2 / 5 !important;
+  grid-column: 2 / 5;
   overflow: hidden;
+}
+
+.cart-row .cart-details h3 {
+  font-size: 16px;
 }
 
 .products-title {
   font-size: 16px;
   font-weight: bold;
   color: #333;
-  margin: 0 !important;
+  margin-bottom: 0;
 }
 
 .discount-section {
@@ -65,7 +70,7 @@
 
 .delete-section {
   text-align: center;
-  grid-column: 6 / 7 !important;
+  grid-column: 6 / 7;
 }
 
 .delete-button {

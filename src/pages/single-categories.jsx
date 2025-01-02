@@ -9,7 +9,6 @@ const SingleCategory = () => {
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
-    console.log("Fetching products for category:", name);
     const fetchProducts = async () => {
       try {
         const res = await fetch(

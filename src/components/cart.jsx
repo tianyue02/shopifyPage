@@ -9,24 +9,6 @@ const Cart = () => {
   const { cartOpen, cartItems } = state;
   const [checkout, setCheckout] = useState(false);
 
-  useEffect(() => {
-    console.log("Cart Component Mounted");
-    console.log("Cart Items in Cart Component:", cartItems);
-  }, []);
-
-  useEffect(() => {
-    console.log("Cart Items Updated:", cartItems);
-    if (cartItems.length > 0) {
-      cartItems.forEach((item, index) => {
-        console.log(`Item at index ${index}:`, item);
-      });
-    }
-  }, [cartItems]);
-
-  useEffect(() => {
-    console.log("Cart Open Status:", cartOpen);
-  }, [cartOpen]);
-
   const closeCart = () => {
     dispatch({ type: "SET_CART_STATE", payload: false });
   };
@@ -41,10 +23,6 @@ const Cart = () => {
         <div>
           {cartItems.length > 0 ? (
             cartItems.map((item, index) => {
-              console.log(
-                `Rendering CartRow for item at index ${index}:`,
-                item
-              );
               return <CartRow key={item.id} {...item} className="cart-row" />;
             })
           ) : (
@@ -57,7 +35,7 @@ const Cart = () => {
               <h2>
                 $
                 {cartItems
-                  .reduce(
+                  ?.reduce(
                     (total, item) =>
                       total +
                       (item.price -

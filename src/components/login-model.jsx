@@ -11,7 +11,6 @@ const Login = () => {
         <div>
           <button
             onClick={() => {
-              console.log("Navigating to login page");
               navigate("/login");
             }}
           >

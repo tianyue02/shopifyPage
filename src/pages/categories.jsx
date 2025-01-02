@@ -6,7 +6,6 @@ import { useTheme } from "../context/theme-context";
 
 const Categories = () => {
   const { isDarkMode } = useTheme();
-  console.log("Categories component mounted");
   const { categories } = useCategory();
 
   if (categories === null) {
@@ -16,8 +15,6 @@ const Categories = () => {
   if (categories.length === 0) {
     return <div>No categories available.</div>;
   }
-
-  console.log("Categories to render:", categories);
 
   return (
     <div className={`category-container ${isDarkMode ? "dark-mode" : "light-mode"}`}>

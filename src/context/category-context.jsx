@@ -9,10 +9,8 @@ export const CategoryProvider = ({ children }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        console.log("Fetching categories...");
         const res = await fetch("https://dummyjson.com/products/categories");
         const data = await res.json();
-        console.log("Fetched categories data:", data);
 
         if (Array.isArray(data)) {
           const formattedCategories = data
@@ -29,8 +27,6 @@ export const CategoryProvider = ({ children }) => {
                 item.name ||
                 item.slug.charAt(0).toUpperCase() + item.slug.slice(1),
             }));
-
-          console.log("Formatted categories:", formattedCategories);
           setCategories(formattedCategories);
         } else {
           console.error("Unexpected data format:", data);

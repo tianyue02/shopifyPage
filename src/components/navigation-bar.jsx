@@ -26,13 +26,11 @@ const NavigationBar = () => {
   };
 
   const toggleCart = () => {
-    console.log("Cart Open Before Toggle:", state.cartOpen);
     if (!isLoggedIn) {
       message.warning("Please Login");
       navigate("/login");
     } else {
       dispatch({ type: "SET_CART_STATE", payload: !state.cartOpen });
-      console.log("Cart Open After Toggle:", !state.cartOpen);
     }
   };
 
