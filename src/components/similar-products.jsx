@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ProductCard from "../components/product-card";
+import ProductCard from "./product-card";
 import "../css/components-css/similar.css";
 
 const SimilarProducts = ({ category }) => {

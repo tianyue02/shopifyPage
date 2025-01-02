@@ -11,7 +11,7 @@ import { useCart } from "../context/cart-context";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaHandHoldingDollar } from "react-icons/fa6";
 import { MdFavoriteBorder } from "react-icons/md";
-import SimilarProducts from "../context/similar-products";
+import SimilarProducts from "./similar-products";
 
 const SingleProduct = () => {
   const { isDarkMode } = useTheme();
