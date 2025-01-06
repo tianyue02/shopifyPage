@@ -44,7 +44,7 @@ const NavigationBar = () => {
     setIsMenuOpen(false);
   };
 
-  const RenderUserLogin = () => {
+  const renderUserLogin = () => {
     if (!isLoggedIn) {
       return (
         <div className="user-section">
@@ -155,7 +155,7 @@ const NavigationBar = () => {
             <Link className="nav-link-right" to="./category">
               Categories
             </Link>
-            {RenderUserLogin()}
+            {renderUserLogin()}
             <div className="cart-icon">
               <AiOutlineShoppingCart onClick={toggleCart} />
               {getCartItemCount() > 0 && (

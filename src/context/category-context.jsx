@@ -16,7 +16,7 @@ export const CategoryProvider = ({ children }) => {
         if (Array.isArray(data)) {
           const formattedCategories = data
             .filter(
-              (item) => typeof item === "object" && item?.slug?.trim() !== ""
+              (item) => item?.slug?.trim() !== ""
             )
             .map((item) => ({
               name: item.slug,

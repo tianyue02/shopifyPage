@@ -6,11 +6,11 @@ const initialState = {
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
-      const existingIndex = state.cartItems.some(
+      const exists = state.cartItems.some(
         (item) => item.id === action.payload.id
       );
 
-      if (!existingIndex) {
+      if (!exists) {
         const newItem = {
           ...action.payload,
           quantity: 1,
