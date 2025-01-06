@@ -1,7 +1,7 @@
 import { useCategory } from "../context/category-context";
 import { Link } from "react-router-dom";
 import React from "react";
-import "../css/page.css/category.css";
+import "./categories.css";
 import { useTheme } from "../context/theme-context";
 
 const Categories = () => {

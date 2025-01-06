@@ -1,6 +1,6 @@
 import React from "react";
 import ProductCard from "./product-card";
-import "../css/components-css/product-list.css";
+import "./product-list.css";
 import "../index.css";
 import { useTheme } from "../context/theme-context";
 

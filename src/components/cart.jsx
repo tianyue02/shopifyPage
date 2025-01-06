@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useCart } from "../context/cart-context";
 import CartRow from "./cart-row";
-import "../css/page.css/cart.css";
+import "./cart.css";
 import { MdClose } from "react-icons/md";
 
 const Cart = () => {

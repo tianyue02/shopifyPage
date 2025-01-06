@@ -1,6 +1,6 @@
 import React from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import "../css/components-css/rating-star.css";
+import "./rating-star.css";
 
 const RatingStar = ({ rating }) => {
   const ratingNum = parseFloat(rating.toString());

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import ProductCard from "./product-card";
-import "../css/components-css/similar.css";
+import ProductCard from "../components/product-card";
+import "./similar-products.css";
 
 const SimilarProducts = ({ category }) => {
   const [similarProducts, setSimilarProducts] = useState([]);

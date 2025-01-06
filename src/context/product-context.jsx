@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { message } from "antd";
 
 const ProductApiContext = createContext(); 
 
@@ -18,7 +19,7 @@ export const ProductApiProvider = ({ children }) => {
       setTrendingProducts(allProducts.slice(0,8));
       setNewestProducts(allProducts.slice(8,16));
     } catch (error) {
-      console.error("Failed to fetch products", error);
+      message.error("Failed to fetch products", error);
     } finally {
       setLoading(false);
     }

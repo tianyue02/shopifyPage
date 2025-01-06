@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import PriceSection from "./price";
 import Reviews from "./review";
 import RatingStar from "./rating-star";
-import "../css/components-css/single-product.css";
+import "./single-product.css";
 import "../index.css";
 import { useTheme } from "../context/theme-context";
 import { useWishList } from "../context/wishList-context";
@@ -43,13 +43,7 @@ const SingleProduct = () => {
       dispatch({
         type: "ADD_TO_CART",
         payload: {
-          id: product.id,
-          price: product.price,
-          title: product.title,
-          category: product.category,
-          rating: product.rating,
-          thumbnail: product.thumbnail,
-          discountPercentage: product.discountPercentage,
+          ...product,
         },
       });
     }
@@ -60,13 +54,7 @@ const SingleProduct = () => {
       dispatch({
         type: "ADD_TO_CART",
         payload: {
-          id: product.id,
-          price: product.price,
-          title: product.title,
-          category: product.category,
-          rating: product.rating,
-          thumbnail: product.thumbnail,
-          discountPercentage: product.discountPercentage,
+          ...product,
         },
       });
       dispatch({ type: "SET_CART_STATE", payload: true });
