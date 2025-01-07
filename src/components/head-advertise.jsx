@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../css/components-css/head-ad.css";
+import "./head-ad.css"
 const HeadAdvertise = () => {
   return (
     <div className="ad-container">

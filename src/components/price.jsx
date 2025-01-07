@@ -1,6 +1,6 @@
 import React from "react";
 import useDiscount from "../hooks/useDiscount";
-import "../css/components-css/price.css"
+import "./price.css";
 
 const PriceSection = ({ price, discountPercentage = 0 }) => {
   const result = useDiscount({ price, discount: discountPercentage });

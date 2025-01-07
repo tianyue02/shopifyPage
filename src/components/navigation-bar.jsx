@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
-import "../css/components-css/navBar.css";
+import "./navBar.css";
 import { FaUser } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
@@ -44,6 +44,93 @@ const NavigationBar = () => {
     setIsMenuOpen(false);
   };
 
+  const renderUserLogin = () => {
+    if (!isLoggedIn) {
+      return (
+        <div className="user-section">
+          <FaUser className="user-icon" />
+          <span
+            className="not-login"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Login
+          </span>
+        </div>
+      );
+    }
+    return (
+      <div className="user-section">
+        <img
+          src="https://robohash.org/Terry.png?set=set4"
+          alt="User Avatar"
+          className="user-avatar"
+        />
+        <div className="nav-link-right" onClick={toggleMenu}>
+          {username}
+        </div>
+        {isMenuOpen && (
+          <div className="dropdown-menu-list" onMouseLeave={closeMenu}>
+            <table>
+              <tbody>
+                <tr>
+                  <td className="icon-cell">
+                    <MdOutlineAccountCircle className="icon-inner" />
+                  </td>
+                  <td className="link-cell">
+                    <Link
+                      to="/account"
+                      className="link-inner-cell"
+                      onClick={() => {
+                        closeMenu();
+                      }}
+                    >
+                      Account
+                    </Link>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="icon-cell">
+                    <FaRegHeart className="icon-inner" />
+                  </td>
+                  <td className="link-cell">
+                    <Link
+                      to="/wishes"
+                      className="link-inner-cell"
+                      onClick={() => {
+                        closeMenu();
+                      }}
+                    >
+                      Wishes
+                    </Link>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="icon-cell">
+                    <LuLogOut className="icon-inner" />
+                  </td>
+                  <td className="link-cell">
+                    <Link
+                      to="/"
+                      className="link-inner-cell"
+                      onClick={() => {
+                        logout();
+                        closeMenu();
+                      }}
+                    >
+                      Logout
+                    </Link>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div className={`nav-bar ${isDarkMode ? "dark-mode" : "light-mode"}`}>
       <div className="nav-bar-container">
@@ -68,87 +155,7 @@ const NavigationBar = () => {
             <Link className="nav-link-right" to="./category">
               Categories
             </Link>
-            {!isLoggedIn ? (
-              <div className="user-section">
-                <FaUser className="user-icon" />
-                <span
-                  className="not-login"
-                  onClick={() => {
-                    navigate("/login");
-                  }}
-                >
-                  Login
-                </span>
-              </div>
-            ) : (
-              <div className="user-section">
-                <img
-                  src="https://robohash.org/Terry.png?set=set4"
-                  alt="User Avatar"
-                  className="user-avatar"
-                />
-                <div className="nav-link-right" onClick={toggleMenu}>
-                  {username}
-                </div>
-                {isMenuOpen && (
-                  <div className="dropdown-menu-list" onMouseLeave={closeMenu}>
-                    <table>
-                      <tbody>
-                        <tr>
-                          <td className="icon-cell">
-                            <MdOutlineAccountCircle className="icon-inner" />
-                          </td>
-                          <td className="link-cell">
-                            <Link
-                              to="/account"
-                              className="link-inner-cell"
-                              onClick={() => {
-                                closeMenu();
-                              }}
-                            >
-                              Account
-                            </Link>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="icon-cell">
-                            <FaRegHeart className="icon-inner" />
-                          </td>
-                          <td className="link-cell">
-                            <Link
-                              to="/wishes"
-                              className="link-inner-cell"
-                              onClick={() => {
-                                closeMenu();
-                              }}
-                            >
-                              Wishes
-                            </Link>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="icon-cell">
-                            <LuLogOut className="icon-inner" />
-                          </td>
-                          <td className="link-cell">
-                            <Link
-                              to="/"
-                              className="link-inner-cell"
-                              onClick={() => {
-                                logout();
-                                closeMenu();
-                              }}
-                            >
-                              Logout
-                            </Link>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                )}
-              </div>
-            )}
+            {renderUserLogin()}
             <div className="cart-icon">
               <AiOutlineShoppingCart onClick={toggleCart} />
               {getCartItemCount() > 0 && (

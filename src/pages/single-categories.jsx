@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../components/product-card";
-import "../css/components-css/single-product.css";
+import "../components/single-product"
 import { useTheme } from "../context/theme-context";
+import { message } from "antd";
 const SingleCategory = () => {
   const {isDarkMode} = useTheme();
   const { name } = useParams();
@@ -17,7 +18,7 @@ const SingleCategory = () => {
         const data = await res.json();
         setProductList(data.products || []);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        message.error("Error fetching products:", error);
       }
     };
     if (name) fetchProducts();

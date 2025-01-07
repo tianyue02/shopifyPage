@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../css/page.css/account.css";
+import "./account.css";
 const AccountPage = () => {
   const [info, setInfo] = useState(null);
   useEffect(() => {

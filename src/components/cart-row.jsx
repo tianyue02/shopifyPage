@@ -1,6 +1,6 @@
 import React from "react";
 import { useCart } from "../context/cart-context";
-import "../css/components-css/cart-row.css";
+import "./cart-row.css";
 import {
   IoIosAddCircleOutline,
   IoIosRemoveCircleOutline,

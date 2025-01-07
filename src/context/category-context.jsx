@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { message } from "antd";
 
 const CategoryContext = createContext();
 
@@ -15,24 +16,20 @@ export const CategoryProvider = ({ children }) => {
         if (Array.isArray(data)) {
           const formattedCategories = data
             .filter(
-              (item) =>
-                typeof item === "object" &&
-                item.slug &&
-                typeof item.slug === "string" &&
-                item.slug.trim() !== ""
+              (item) => item?.slug?.trim() !== ""
             )
             .map((item) => ({
               name: item.slug,
               displayName:
                 item.name ||
-                item.slug.charAt(0).toUpperCase() + item.slug.slice(1),
+                item.slug.slice(0).toUpperCase() + item.slug.slice(1),
             }));
           setCategories(formattedCategories);
         } else {
-          console.error("Unexpected data format:", data);
+          message.error("Unexpected data format:", data);
         }
       } catch (error) {
-        console.error("Error fetching categories:", error);
+        message.error("Error fetching categories:", error);
       } finally {
         setLoading(false);
       }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import RatingStar from "./rating-star";
-import "../css/components-css/review.css"
+import "./review.css";
 
 const reviews = [
   {

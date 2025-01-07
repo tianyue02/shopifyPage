@@ -1,6 +1,6 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import "../css/components-css/product-card.css";
+import "./product-card.css";
 import PriceSection from "./price";
 import RatingStar from "./rating-star";
 import { useState } from "react";

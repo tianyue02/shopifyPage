@@ -1,7 +1,7 @@
 import { TbTruckDelivery, TbDiscount } from "react-icons/tb";
 import { RiRefund2Fill } from "react-icons/ri";
 import { MdSupportAgent } from "react-icons/md";
-import "../css/components-css/features.css";
+import "./features.css";
 
 const data = [
   {
